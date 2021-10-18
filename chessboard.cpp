@@ -6,9 +6,19 @@
 #include<QDebug>
 #include<QRect>
 #include<QPushButton>
+#include<QLabel>
 
 int ChessBoard::x ;
 int ChessBoard::y ;
+
+int ChessBoard::xIndexPossition(int X){
+    return X*90+70-15;
+}
+
+int ChessBoard::yIndexPossition(int Y){
+    return 940-(Y*90+70)-15;
+}
+
 ChessBoard::ChessBoard(QWidget *parent): QWidget(parent)
 {
     QPushButton * bt1 = new QPushButton(this);
@@ -34,6 +44,42 @@ ChessBoard::ChessBoard(QWidget *parent): QWidget(parent)
     bt2->move(290,0);
     bt3->move(470,0);
     bt4->move(650,0);
+
+
+    //绘制棋子
+    QPushButton * BedSoldier1 = new QPushButton("兵");
+    QPushButton * BlackSoldier1 = new QPushButton("卒");
+    QPushButton * RedSoldier2 = new QPushButton("兵");
+    QPushButton * BlackSoldier2 = new QPushButton("卒");
+    QPushButton * RedSoldier3 = new QPushButton("兵");
+    QPushButton * BlackSoldier3 = new QPushButton("卒");
+    QPushButton * RedSoldier4 = new QPushButton("兵");
+    QPushButton * BlackSoldier4 = new QPushButton("卒");
+    QPushButton * RedSoldier5 = new QPushButton("兵");
+    QPushButton * BlackSoldier5 = new QPushButton("卒");
+    QPushButton * RedCannon1 = new QPushButton("炮");
+    QPushButton * RedCannon2 = new QPushButton("炮");
+    QPushButton * BlackCannon1 = new QPushButton("炮");
+    QPushButton * BlackCannon2 = new QPushButton("炮");
+    QPushButton * RedRook1 = new QPushButton("车");
+    QPushButton * RedRook2 = new QPushButton("车");
+    QPushButton * BlackRook1 = new QPushButton("車");
+    QPushButton * BlackRook2 = new QPushButton("車");
+    QPushButton * RedHorse1 = new QPushButton("马");
+    QPushButton * RedHorse2 = new QPushButton("马");
+    QPushButton * BlackHorse1 = new QPushButton("马");
+    QPushButton * BlackHorse2 = new QPushButton("马");
+    QPushButton * RedElephant1 = new QPushButton("象");
+    QPushButton * RedElephant2 = new QPushButton("象");
+    QPushButton * BlackElephant1 = new QPushButton("象");
+    QPushButton * BlackElephant2 = new QPushButton("象");
+    QPushButton * RedScholar1 = new QPushButton("士");
+    QPushButton * RedScholar2 = new QPushButton("士");
+    QPushButton * BlackScholar1 = new QPushButton("士");
+    QPushButton * BlackScholar2 = new QPushButton("士");
+    QPushButton * RedMarshal = new QPushButton("帅");
+    QPushButton * BlackMarshal = new QPushButton("将");
+
 }
 
 void ChessBoard::mouseMoveEvent(QMouseEvent *ev){
