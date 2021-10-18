@@ -162,3 +162,15 @@ void ChessBoard::paintEvent(QPaintEvent *event){
    }
    update();
 }
+
+void ChessBoard::mousePressEvent(QMouseEvent *eve){
+    ChessBoard::x = moveX;
+    ChessBoard::y = moveY;
+}
+
+int ChessBoard::xIndex2Position(int x){
+    return x*90+70;
+}
+
+int ChessBoard::yIndex2Position(int y){
+    return 940-(y*90+70);}

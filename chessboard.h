@@ -18,7 +18,12 @@ public:
     void paintEvent(QPaintEvent* event);//override绘图函数
     void mouseMoveEvent(QMouseEvent* ev);
     void paintLine(QPainter* p,int _x,int _y);//绘制折线
+    void mousePressEvent(QMouseEvent* eve);
     static QVector<PositionMessage> position[90][90];
+    static int x;
+    static int y;
+    static int xIndex2Position(int x);
+    static int yIndex2Position(int y);
 };
 
 #endif // CHESSBOARD_H
