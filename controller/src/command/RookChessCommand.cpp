@@ -17,6 +17,10 @@ bool RookChessCommand::isValid() const noexcept {
         return false;
     }
 
+    if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
+        return false;
+    }
+
     // 检查移动是否为直线
     if (nextPosY - curPosY != 0 && isXNotChanged) {
         return false;

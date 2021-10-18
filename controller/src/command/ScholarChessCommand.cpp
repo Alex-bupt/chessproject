@@ -17,6 +17,10 @@ bool ScholarChessCommand::isValid() const noexcept {
         return false;
     }
 
+    if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
+        return false;
+    }
+
     unsigned uXOffset = abs(nextPosX - curPosX);
     unsigned uYOffset = abs(nextPosY - curPosY);
     // 检查是否走斜线

@@ -17,6 +17,10 @@ bool SoldierChessCommand::isValid() const noexcept{
         return false;
     }
 
+    if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
+        return false;
+    }
+
     int xOffset = nextPosX - curPosX;
     int yOffset = nextPosY - curPosY;
 

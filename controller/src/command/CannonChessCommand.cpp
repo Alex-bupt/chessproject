@@ -13,6 +13,10 @@ bool CannonChessCommand::isValid() const noexcept {
     int nextPosX = 0, nextPosY = 0;
     bool isXNotChanged = nextPosX - curPosX != 0;
 
+    if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
+        return false;
+    }
+
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
         return false;
