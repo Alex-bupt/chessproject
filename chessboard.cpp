@@ -12,11 +12,11 @@ int ChessBoard::x ;
 int ChessBoard::y ;
 
 int ChessBoard::xIndexPossition(int X){
-    return X*90+70-15;
+    return X*90+70-30;
 }
 
 int ChessBoard::yIndexPossition(int Y){
-    return 940-(Y*90+70)-15;
+    return 940-(Y*90+70)-30;
 }
 
 ChessBoard::ChessBoard(QWidget *parent): QWidget(parent)
@@ -47,38 +47,70 @@ ChessBoard::ChessBoard(QWidget *parent): QWidget(parent)
 
 
     //绘制棋子
-    QPushButton * BedSoldier1 = new QPushButton("兵");
+    QPushButton * RedSoldier1 = new QPushButton("兵");
+    RedSoldier1->setFixedSize(60,60);
     QPushButton * BlackSoldier1 = new QPushButton("卒");
+    BlackSoldier1->setFixedSize(60,60);
     QPushButton * RedSoldier2 = new QPushButton("兵");
+    RedSoldier2->setFixedSize(60,60);
     QPushButton * BlackSoldier2 = new QPushButton("卒");
+    BlackSoldier2->setFixedSize(60,60);
     QPushButton * RedSoldier3 = new QPushButton("兵");
+    RedSoldier3->setFixedSize(60,60);
     QPushButton * BlackSoldier3 = new QPushButton("卒");
+    BlackSoldier3->setFixedSize(60,60);
     QPushButton * RedSoldier4 = new QPushButton("兵");
+    RedSoldier4->setFixedSize(60,60);
     QPushButton * BlackSoldier4 = new QPushButton("卒");
+    BlackSoldier4->setFixedSize(60,60);
     QPushButton * RedSoldier5 = new QPushButton("兵");
+    RedSoldier5->setFixedSize(60,60);
     QPushButton * BlackSoldier5 = new QPushButton("卒");
+    BlackSoldier5->setFixedSize(60,60);
     QPushButton * RedCannon1 = new QPushButton("炮");
+    RedCannon1->setFixedSize(60,60);
     QPushButton * RedCannon2 = new QPushButton("炮");
+    RedCannon2->setFixedSize(60,60);
     QPushButton * BlackCannon1 = new QPushButton("炮");
+    BlackCannon1->setFixedSize(60,60);
     QPushButton * BlackCannon2 = new QPushButton("炮");
+    BlackCannon2->setFixedSize(60,60);
     QPushButton * RedRook1 = new QPushButton("车");
+    RedRook1->setFixedSize(60,60);
     QPushButton * RedRook2 = new QPushButton("车");
+    RedRook2->setFixedSize(60,60);
     QPushButton * BlackRook1 = new QPushButton("車");
+    BlackRook1->setFixedSize(60,60);
     QPushButton * BlackRook2 = new QPushButton("車");
+    BlackRook2->setFixedSize(60,60);
     QPushButton * RedHorse1 = new QPushButton("马");
+    RedHorse1->setFixedSize(60,60);
     QPushButton * RedHorse2 = new QPushButton("马");
+    RedHorse2->setFixedSize(60,60);
     QPushButton * BlackHorse1 = new QPushButton("马");
+    BlackHorse1->setFixedSize(60,60);
     QPushButton * BlackHorse2 = new QPushButton("马");
+    BlackHorse2->setFixedSize(60,60);
     QPushButton * RedElephant1 = new QPushButton("象");
+    RedElephant1->setFixedSize(60,60);
     QPushButton * RedElephant2 = new QPushButton("象");
+    RedElephant2->setFixedSize(60,60);
     QPushButton * BlackElephant1 = new QPushButton("象");
+    BlackElephant1->setFixedSize(60,60);
     QPushButton * BlackElephant2 = new QPushButton("象");
+    BlackElephant2->setFixedSize(60,60);
     QPushButton * RedScholar1 = new QPushButton("士");
+    RedScholar1->setFixedSize(60,60);
     QPushButton * RedScholar2 = new QPushButton("士");
+    RedScholar2->setFixedSize(60,60);
     QPushButton * BlackScholar1 = new QPushButton("士");
+    BlackScholar1->setFixedSize(60,60);
     QPushButton * BlackScholar2 = new QPushButton("士");
+    BlackScholar2->setFixedSize(60,60);
     QPushButton * RedMarshal = new QPushButton("帅");
+    RedMarshal->setFixedSize(60,60);
     QPushButton * BlackMarshal = new QPushButton("将");
+    BlackMarshal->setFixedSize(60,60);
 
 }
 
