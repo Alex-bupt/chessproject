@@ -7,6 +7,8 @@
 #include<QRect>
 #include<QPushButton>
 
+int ChessBoard::x ;
+int ChessBoard::y ;
 ChessBoard::ChessBoard(QWidget *parent): QWidget(parent)
 {
     QPushButton * bt1 = new QPushButton(this);
@@ -41,6 +43,11 @@ void ChessBoard::mouseMoveEvent(QMouseEvent *ev){
     moveY1=(ev->y()-25)/90;
    // qDebug() << ev->x() <<ev->y();
     qDebug() << moveX1 <<" " <<moveY1;
+}
+
+void ChessBoard::mousePressEvent(QMouseEvent *eve){
+    ChessBoard::x = moveX;
+    ChessBoard::y = moveY;
 }
 
 void ChessBoard::paintLine(QPainter *painter, int x, int y){
