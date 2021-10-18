@@ -27,7 +27,7 @@ bool MarshalChessCommand::isValid() const noexcept {
 
 bool MarshalChessCommand::isOutOfRanged() const noexcept {
     int nextPosX = 0, nextPosY = 0;
-    int team = marshalChess;
+    int team = chess->team;
     nextPosY -= (!team) * 7;
     return nextPosX >= 3 && nextPosX <= 5 && nextPosY >= 0 && nextPosY <= 2;
 }
