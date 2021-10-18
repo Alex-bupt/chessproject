@@ -37,7 +37,7 @@ bool ElephantChessCommand::isValid() const noexcept {
 
 bool ElephantChessCommand::isOutOfRanged() const noexcept {
     int nextPosX = 0, nextPosY = 0;
-    int team = elephantChess;
+    int team = chess->team;
     nextPosY -= (!team) * 5;
     return nextPosX >= 0 && nextPosX <= 8 && nextPosY >= 0 && nextPosY <= 4;
 }
