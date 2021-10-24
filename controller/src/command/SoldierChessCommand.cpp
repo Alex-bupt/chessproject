@@ -6,12 +6,10 @@
 #include <cmath>
 #include <SoldierChessCommand.h>
 
-SoldierChessCommand::SoldierChessCommand(Chess chess, ChessView chessView) :
-        AbstractChessCommand(chess, chessView) {}
+SoldierChessCommand::SoldierChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool SoldierChessCommand::isValid() const noexcept{
-    int nextPosX = 0, nextPosY = 0;
-
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
         return false;

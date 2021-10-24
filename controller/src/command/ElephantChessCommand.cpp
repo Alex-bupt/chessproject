@@ -6,12 +6,10 @@
 #include <cmath>
 #include <ElephantChessCommand.h>
 
-ElephantChessCommand::ElephantChessCommand(Chess chess, ChessView chessView) :
-        AbstractChessCommand(chess, chessView) {}
+ElephantChessCommand::ElephantChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool ElephantChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
-
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
         return false;

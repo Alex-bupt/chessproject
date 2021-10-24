@@ -14,7 +14,7 @@
  */
 class ElephantChessCommand : public AbstractChessCommand {
 public:
-    ElephantChessCommand(Chess chess, ChessView chessView);
+    ElephantChessCommand(Chess chess);
 
     [[nodiscard]] bool isValid() const noexcept override;
 

@@ -5,11 +5,10 @@
 
 #include <RookChessCommand.h>
 
-RookChessCommand::RookChessCommand(Chess chess, ChessView chessView) :
-        AbstractChessCommand(chess, chessView) {}
+RookChessCommand::RookChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool RookChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
     bool isXNotChanged = nextPosX - curPosX != 0;
 
     // 检查是否没动

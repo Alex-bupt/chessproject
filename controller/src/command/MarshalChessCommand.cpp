@@ -6,11 +6,10 @@
 #include <cmath>
 #include <MarshalChessCommand.h>
 
-MarshalChessCommand::MarshalChessCommand(Chess chess, ChessView chessView) :
-        AbstractChessCommand(chess, chessView) {}
+MarshalChessCommand::MarshalChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool MarshalChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
         return false;

@@ -13,7 +13,7 @@
  */
 class MarshalChessCommand : public AbstractChessCommand{
 public:
-    MarshalChessCommand(Chess chess, ChessView chessView);
+    MarshalChessCommand(Chess chess);
     [[nodiscard]] bool isValid() const noexcept override;
     // 将不能出九宫格，需要覆写边界范围
     [[nodiscard]] bool isOutOfRanged() const noexcept override;

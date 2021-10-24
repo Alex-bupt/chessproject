@@ -6,12 +6,10 @@
 #include <cmath>
 #include <HorseChessCommand.h>
 
-HorseChessCommand::HorseChessCommand(Chess chess, ChessView chessView) :
-        AbstractChessCommand(chess, chessView) {}
+HorseChessCommand::HorseChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool HorseChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
-
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
         return false;

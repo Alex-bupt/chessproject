@@ -6,12 +6,10 @@
 #include <cmath>
 #include <ScholarChessCommand.h>
 
-ScholarChessCommand::ScholarChessCommand(Chess chess, ChessView chessView) :
-        AbstractChessCommand(chess, chessView) {}
+ScholarChessCommand::ScholarChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool ScholarChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
-
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
         return false;

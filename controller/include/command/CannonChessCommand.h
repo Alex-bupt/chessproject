@@ -13,7 +13,7 @@
  */
 class CannonChessCommand : public AbstractChessCommand{
 public:
-    CannonChessCommand(Chess chess, ChessView chessView);
+    CannonChessCommand(Chess chess);
     [[nodiscard]] bool isValid() const noexcept override;
 };
 

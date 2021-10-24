@@ -6,11 +6,10 @@
 #include <cstdlib>
 #include <CannonChessCommand.h>
 
-CannonChessCommand::CannonChessCommand(Chess chess, ChessView chessView) :
-        AbstractChessCommand(chess, chessView) {}
+CannonChessCommand::CannonChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool CannonChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
     bool isXNotChanged = nextPosX - curPosX != 0;
 
     if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
