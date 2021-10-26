@@ -3,17 +3,19 @@
  */
 
 
-#include "../../../include/controller/command/ScholarChessCommand.h"
 #include <cmath>
-ScholarChessCommand::ScholarChessCommand(Chess chess, ChessView chessView) :
-        scholarChess(chess),
-        scholarChessView(chessView) {}
+#include "ScholarChessCommand.h"
+
+ScholarChessCommand::ScholarChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool ScholarChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
-
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
+        return false;
+    }
+
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
         return false;
     }
 
@@ -28,7 +30,7 @@ bool ScholarChessCommand::isValid() const noexcept {
 
 bool ScholarChessCommand::isOutOfRanged() const noexcept {
     int nextPosX = 0, nextPosY = 0;
-    int team = scholarChess;
+    int team = chess->team;
     nextPosY -= (!team) * 7;
     return nextPosX >= 3 && nextPosX <= 5 && nextPosY >= 0 && nextPosY <= 2;
 }

@@ -6,19 +6,18 @@
 #ifndef CHESS_ABSTRACT_CHESS_COMMAND_H
 #define CHESS_ABSTRACT_CHESS_COMMAND_H
 
-#include <stack>
+#include "positionmessage.h"
+#include "chessesmanager.h"
 
 /**
  * WAITING_OTHERS宏是在开发过程中，其他项目组成员尚未提供API
  * 先用int定义的类型代替，省的IDE一直error
  **/
-#define WAITING_OTHERS
+//#define WAITING_OTHERS
 #ifndef WAITING_OTHERS
-typedef AbstractChess* Chess;
-typedef AbstractChessView* ChessView;
+typedef AbstractChess *Chess;
 #else
-typedef int Chess;
-typedef int ChessView;
+typedef int *Chess;
 #endif // WAITING_OTHERS
 
 /**
@@ -26,15 +25,16 @@ typedef int ChessView;
  */
 class AbstractChessCommand {
 public:
-    AbstractChessCommand();
+    AbstractChessCommand(Chess);
 
     virtual ~AbstractChessCommand() noexcept;
 
     /**
      * 移动棋子函数
+     * @return 移动是否成功
      * @e 禁止覆写！
      **/
-    void move();
+    bool move();
 
     /**
      * 撤销棋子函数
@@ -62,14 +62,19 @@ public:
      */
     [[nodiscard]] virtual bool isValid() const noexcept = 0;
 
+    void setNextPos(int x, int y);
+
 protected:
     int lastPosX;
     int lastPosY;
     int curPosX;
     int curPosY;
+    int nextPosX;
+    int nextPosY;
 
+    Chess chess;
 private:
-    static std::stack<AbstractChessCommand *> commands;
+    bool isVictory();
 };
 
 #endif //CHESS_ABSTRACT_CHESS_COMMAND_H

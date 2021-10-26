@@ -4,17 +4,18 @@
 
 
 #include <cmath>
-#include "../../../include/controller/command/SoldierChessCommand.h"
+#include "SoldierChessCommand.h"
 
-SoldierChessCommand::SoldierChessCommand(Chess chess, ChessView chessView) :
-        soldierChess(chess),
-        soldierChessView(chessView) {}
+SoldierChessCommand::SoldierChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool SoldierChessCommand::isValid() const noexcept{
-    int nextPosX = 0, nextPosY = 0;
-
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
+        return false;
+    }
+
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
         return false;
     }
 
@@ -27,8 +28,8 @@ bool SoldierChessCommand::isValid() const noexcept{
     }
 
     // 检查是否能够横移
-    // TODO: 从SoldierChessModel获取是否在本方界内
-    bool isDefense = this->soldierChess;
+    auto soldierChess = (SoldierChess*) this->chess;
+    bool isDefense = soldierChess->isDefense();
     if (isDefense && xOffset) {
         return false;
     }

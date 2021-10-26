@@ -3,18 +3,20 @@
  */
 
 
-#include "../../../include/controller/command/RookChessCommand.h"
+#include "RookChessCommand.h"
 
-RookChessCommand::RookChessCommand(Chess chess, ChessView chessView) :
-        rookChess(chess),
-        rookChessView(chessView) {}
+RookChessCommand::RookChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool RookChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
     bool isXNotChanged = nextPosX - curPosX != 0;
 
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
+        return false;
+    }
+
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
         return false;
     }
 
@@ -29,9 +31,12 @@ bool RookChessCommand::isValid() const noexcept {
     int end = isXNotChanged ? nextPosY : nextPosX;
     // 确定坐标是递增还是递减
     int change = end - start >= 0 ? 1 : -1;
-    // TODO: if中应调用ChessBoardModel提供的判断某坐标是否存在棋子的函数
+    int x = 0;
+    int y = 0;
     for (int i = start; i < end; i += change) {
-        if (this->rookChess) {
+        x = isXNotChanged ? curPosX : i;
+        y = isXNotChanged ? i : curPosY;
+        if (PositionMessage::position[x][y].isFilled) {
             return false;
         }
     }

@@ -13,12 +13,9 @@
  */
 class RookChessCommand : public AbstractChessCommand {
 public:
-    RookChessCommand(Chess chess, ChessView chessView);
+    RookChessCommand(Chess chess);
 
     [[nodiscard]] bool isValid() const noexcept override;
-private:
-    Chess rookChess;
-    ChessView rookChessView;
 };
 
 

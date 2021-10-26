@@ -13,14 +13,10 @@
  */
 class ScholarChessCommand : public AbstractChessCommand {
 public:
-    ScholarChessCommand(Chess chess, ChessView chessView);
+    ScholarChessCommand(Chess chess);
     [[nodiscard]] bool isValid() const noexcept override;
     // 士不能出九宫格，需要覆写边界范围
     [[nodiscard]] bool isOutOfRanged() const noexcept override;
-
-private:
-    Chess scholarChess;
-    ChessView scholarChessView;
 };
 
 

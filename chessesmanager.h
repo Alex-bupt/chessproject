@@ -14,7 +14,7 @@
 class ChessesManager
 {
 public:
-    ChessesManager();
+    static ChessesManager getInstance();
     std::array<SoldierChess,5> RedSoldier;
     std::array<SoldierChess,5> BlackSoldier;
     std::array<CannonChess,2> RedCannon;
@@ -30,9 +30,9 @@ public:
     std::array<MarshalChess,1> RedMarshal;
     std::array<MarshalChess,1> BlackMarshal;
     void removeChess();
-
-    // for test
     std::vector<AbstractChess> chesses;
+    static ChessesManager* only;
+    ChessesManager();
 };
 
 #endif // CHESSES_MANAGER_H

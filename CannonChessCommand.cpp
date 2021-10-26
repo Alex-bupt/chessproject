@@ -4,15 +4,17 @@
 
 
 #include <cstdlib>
-#include "../../../include/controller/command/CannonChessCommand.h"
+#include "CannonChessCommand.h"
 
-CannonChessCommand::CannonChessCommand(Chess chess, ChessView chessView) :
-        cannonChess(chess),
-        cannonChessView(chessView) {}
+CannonChessCommand::CannonChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool CannonChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
     bool isXNotChanged = nextPosX - curPosX != 0;
+
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
+        return false;
+    }
 
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
@@ -27,17 +29,19 @@ bool CannonChessCommand::isValid() const noexcept {
     // 通过x坐标是否改变来判断炮棋子移动方式
     int start = isXNotChanged ? curPosY : curPosX;
     int end = isXNotChanged ? nextPosY : nextPosX;
+    int x = 0;
+    int y = 0;
     // 确定坐标是递增还是递减
     int change = end - start >= 0 ? 1 : -1;
     // 判断是吃子还是移动
-    // TODO: if中应调用ChessBoardModel提供的判断某坐标是否存在棋子的函数
-    if (this->cannonChess) {
+    if (PositionMessage::position[nextPosX][nextPosY].isFilled) {
         // 吃子
         // 检查移动路径上是否有2个及以上棋子
         int cnt = 0;
-        // TODO: if中应调用ChessBoardModel提供的判断某坐标是否存在棋子的函数
         for (int i = start; i < end; i += change) {
-            if (rand()) { // NOLINT(cert-msc50-cpp)
+            x = isXNotChanged ? curPosX : i;
+            y = isXNotChanged ? i : curPosY;
+            if (PositionMessage::position[x][y].isFilled) {
                 ++cnt;
             }
             // 2个就不行
@@ -47,9 +51,10 @@ bool CannonChessCommand::isValid() const noexcept {
         }
     } else {
         // 移动
-        // TODO: if中应调用ChessBoardModel提供的判断某坐标是否存在棋子的函数
         for (int i = start; i < end; i += change) {
-            if (rand()) { // NOLINT(cert-msc50-cpp)
+            x = isXNotChanged ? curPosX : i;
+            y = isXNotChanged ? i : curPosY;
+            if (PositionMessage::position[x][y].isFilled) {
                 return false;
             }
         }

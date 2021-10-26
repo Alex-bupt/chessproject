@@ -3,18 +3,19 @@
  */
 
 
-#include "../../../include/controller/command/HorseChessCommand.h"
 #include <cmath>
+#include "HorseChessCommand.h"
 
-HorseChessCommand::HorseChessCommand(Chess chess, ChessView chessView) :
-        horseChess(chess),
-        horseChessView(chessView) {}
+HorseChessCommand::HorseChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool HorseChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
-
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
+        return false;
+    }
+
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
         return false;
     }
 
@@ -34,9 +35,8 @@ bool HorseChessCommand::isValid() const noexcept {
     // 判断是否硌马腿
     xOffset >>= 1;
     yOffset >>= 1;
-    // TODO: if中应调用ChessBoardModel提供的判断某坐标是否存在棋子的函数
     // 判断的坐标：curPosX + xOffset, curPosY + yOffset
-    if (this->horseChess) {
+    if (PositionMessage::position[curPosX + xOffset][curPosY + yOffset].isFilled) {
         return false;
     }
     return true;

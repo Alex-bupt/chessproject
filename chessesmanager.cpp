@@ -5,6 +5,14 @@ constexpr int TABLE_LEFT =0;
 constexpr int TABLE_BOTTOM=0;
 constexpr int PER_CELL=20;
 
+ChessesManager* ChessesManager::only=nullptr;
+ChessesManager ChessesManager::getInstance(){
+    if (ChessesManager::only==nullptr){
+        ChessesManager::only = new ChessesManager;
+    }
+    return *ChessesManager::only;
+}
+
 ChessesManager::ChessesManager(){
     for(int i=0;i<5;i++){
         RedSoldier[i]= SoldierChess(RED,2*i,3);

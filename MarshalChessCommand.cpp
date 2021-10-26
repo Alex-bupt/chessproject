@@ -3,16 +3,19 @@
  */
 
 
-#include "../../../include/controller/command/MarshalChessCommand.h"
 #include <cmath>
-MarshalChessCommand::MarshalChessCommand(Chess chess, ChessView chessView) :
-        marshalChess(chess),
-        marshalChessView(chessView) {}
+#include "MarshalChessCommand.h"
+
+MarshalChessCommand::MarshalChessCommand(Chess chess) :
+        AbstractChessCommand(chess) {}
 
 bool MarshalChessCommand::isValid() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
+        return false;
+    }
+
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
         return false;
     }
 
@@ -27,7 +30,7 @@ bool MarshalChessCommand::isValid() const noexcept {
 
 bool MarshalChessCommand::isOutOfRanged() const noexcept {
     int nextPosX = 0, nextPosY = 0;
-    int team = marshalChess;
+    int team = chess->team;
     nextPosY -= (!team) * 7;
     return nextPosX >= 3 && nextPosX <= 5 && nextPosY >= 0 && nextPosY <= 2;
 }

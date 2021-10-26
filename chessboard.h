@@ -1,4 +1,4 @@
-#ifndef CHESSBOARD_H
+ #ifndef CHESSBOARD_H
 #define CHESSBOARD_H
 #include<QPaintEvent>
 #include<QWidget>
@@ -6,6 +6,7 @@
 #include<QPainter>
 #include"positionmessage.h"
 #include<QVector>
+#include "Controller.h"
 /****************
  * author:杨臻烨 *
  ****************/
@@ -16,14 +17,13 @@ public:
     static int y;
     int moveX=0,moveY=0;//左下角原点
     int moveX1=0,moveY1=0;//左上角原点
-    static int xIndexPossition(int x);
-    static int yIndexPossition(int y);
+    static int xIndexPosition(int x);
+    static int yIndexPosition(int y);
     explicit ChessBoard(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent* event);//override绘图函数
     void mouseMoveEvent(QMouseEvent* ev);
     void mousePressEvent(QMouseEvent* eve);
-    void paintLine(QPainter* p,int _x,int _y);//绘制折线
-    static QVector<PositionMessage> position[9][10];
+    void paintLine(QPainter* p,int _x,int _y);//绘制折线   
 };
 
 #endif // CHESSBOARD_H

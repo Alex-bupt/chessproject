@@ -13,13 +13,9 @@
  */
 class HorseChessCommand : public AbstractChessCommand{
 public:
-    HorseChessCommand(Chess chess, ChessView chessView);
+    HorseChessCommand(Chess chess);
 
     [[nodiscard]] bool isValid() const noexcept override;
-
-private:
-    Chess horseChess;
-    ChessView horseChessView;
 };
 
 

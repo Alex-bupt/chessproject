@@ -10,12 +10,11 @@
 
 int ChessBoard::x ;
 int ChessBoard::y ;
-
-int ChessBoard::xIndexPossition(int X){
+int ChessBoard::xIndexPosition(int X){
     return X*90+70-35;
 }
 
-int ChessBoard::yIndexPossition(int Y){
+int ChessBoard::yIndexPosition(int Y){
     return 940-(Y*90+70)-35;
 }
 
@@ -111,7 +110,7 @@ ChessBoard::ChessBoard(QWidget *parent): QWidget(parent)
     BlackHorse1->setFixedSize(70,70);
     BlackHorse1->move(125,845);
     QPushButton * BlackHorse2 = new QPushButton("马",this);
-    BlackHorse2->setFixedSize(60,60);
+    BlackHorse2->setFixedSize(70,70);
     BlackHorse2->move(665,845);
     QPushButton * RedElephant1 = new QPushButton("象",this);
     RedElephant1->setFixedSize(70,70);
@@ -144,6 +143,14 @@ ChessBoard::ChessBoard(QWidget *parent): QWidget(parent)
     BlackMarshal->setFixedSize(70,70);
     BlackMarshal->move(395,845);
 
+
+    //wcx
+        //std::map<QPushButton,AbstractChess> mapQBtoAC;
+        //mapQBtoAC[*RedSoldier1]=ChessManager::getInstance().RedSoldier[0];
+
+        connect(RedSoldier1,&QPushButton::clicked,[=](){
+            Controller::getController().moveChess(Soldier,&ChessesManager::getInstance().RedSoldier[0],ChessBoard::x,ChessBoard::y);
+        });
 }
 
 void ChessBoard::mouseMoveEvent(QMouseEvent *ev){
