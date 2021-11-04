@@ -5,7 +5,7 @@
 #ifndef CHESS_CONTROLLER_H
 #define CHESS_CONTROLLER_H
 
-#include "command/ChessCommand.h"
+#include "ChessCommand.h"
 #include <stack>
 
 enum ChessType {
@@ -33,7 +33,12 @@ public:
      * @param nextPosX 下一步的X坐标
      * @param nextPosY 下一步的纵坐标
      */
-    void moveChess(int chessType, Chess chess, int nextPosX, int nextPosY);
+    void moveChess(ChessType chessType, Chess chess, int nextPosX, int nextPosY);
+
+    /**
+     * 悔棋
+     */
+    void regretChess();
 
     /**
      * 获得储存命令的栈
@@ -46,7 +51,7 @@ public:
 private:
     static std::stack<AbstractChessCommand *> commandsStack;
 
-    static Controller controller;
+    static Controller* controller;
 
     Controller() = default;
 

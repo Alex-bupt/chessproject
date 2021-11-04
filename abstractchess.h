@@ -11,6 +11,7 @@ public:
     void setCoordinate(int x_,int y_);
     int x{-1}, y{-1};//the coordinate of the chess, -1 means UNSET
     Team team{RED};//the team: RED or BLACK
+    bool isAlive = 1;
 private:
 };
 

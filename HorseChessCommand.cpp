@@ -4,7 +4,7 @@
 
 
 #include <cmath>
-#include <HorseChessCommand.h>
+#include "HorseChessCommand.h"
 
 HorseChessCommand::HorseChessCommand(Chess chess) :
         AbstractChessCommand(chess) {}
@@ -15,7 +15,7 @@ bool HorseChessCommand::isValid() const noexcept {
         return false;
     }
 
-    if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
         return false;
     }
 
@@ -36,7 +36,7 @@ bool HorseChessCommand::isValid() const noexcept {
     xOffset >>= 1;
     yOffset >>= 1;
     // 判断的坐标：curPosX + xOffset, curPosY + yOffset
-    if (ChessBoard::position[curPosX + xOffset][curPosY + yOffset].isFilled) {
+    if (PositionMessage::position[curPosX + xOffset][curPosY + yOffset].isFilled) {
         return false;
     }
     return true;

@@ -2,11 +2,12 @@
  * @author: 武连增
  */
 
-#include <Controller.h>
+#include "Controller.h"
 #include <cassert>
 
 // 这里可能会有bug
-Controller Controller::controller; // NOLINT(cert-err58-cpp)
+Controller* Controller::controller = new Controller(); // NOLINT(cert-err58-cpp)
+std::stack<AbstractChessCommand*> Controller::commandsStack;
 
 Controller::~Controller() {
     destroyCommands();
@@ -24,10 +25,11 @@ void Controller::destroyCommands() {
 }
 
 Controller Controller::getController() {
-    return controller;
+    return *controller;
 }
 
-void Controller::moveChess(int chessType, Chess chess, int nextPosX, int nextPosY) {
+
+void Controller::moveChess(ChessType chessType, Chess chess, int nextPosX, int nextPosY) {
     auto command = createChessCommand(chessType, chess);
     command->setNextPos(nextPosX, nextPosY);
     if (command->move()) {
@@ -66,4 +68,11 @@ AbstractChessCommand *Controller::createChessCommand(int chessType, Chess chess)
             assert(false);
     }
     return command;
+}
+
+void Controller::regretChess() {
+    auto top = commandsStack.top();
+    top->undo();
+    delete top;
+    commandsStack.pop();
 }

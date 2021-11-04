@@ -6,7 +6,7 @@
 #ifndef CHESS_ABSTRACT_CHESS_COMMAND_H
 #define CHESS_ABSTRACT_CHESS_COMMAND_H
 
-#include "chessboard.h"
+#include "positionmessage.h"
 #include "chessesmanager.h"
 
 /**

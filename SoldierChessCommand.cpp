@@ -4,7 +4,7 @@
 
 
 #include <cmath>
-#include <SoldierChessCommand.h>
+#include "SoldierChessCommand.h"
 
 SoldierChessCommand::SoldierChessCommand(Chess chess) :
         AbstractChessCommand(chess) {}
@@ -15,7 +15,7 @@ bool SoldierChessCommand::isValid() const noexcept{
         return false;
     }
 
-    if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
         return false;
     }
 
@@ -37,7 +37,7 @@ bool SoldierChessCommand::isValid() const noexcept{
     // 检查是否后移
     // 若后移，team + yOffset为0或1
     // 0或1右移1位为0
-    int team = 0;
+    int team = chess->team;
     if (yOffset) {
         int judge = (team + yOffset) >> 1;
         if (!judge) {

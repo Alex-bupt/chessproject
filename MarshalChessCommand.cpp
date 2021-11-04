@@ -3,8 +3,9 @@
  */
 
 
+#include "MarshalChessCommand.h"
 #include <cmath>
-#include <MarshalChessCommand.h>
+#include <iostream>
 
 MarshalChessCommand::MarshalChessCommand(Chess chess) :
         AbstractChessCommand(chess) {}
@@ -12,10 +13,12 @@ MarshalChessCommand::MarshalChessCommand(Chess chess) :
 bool MarshalChessCommand::isValid() const noexcept {
     // 检查是否没动
     if (nextPosX == curPosX && nextPosY == curPosY) {
+        std::cout << "---False1\n";
         return false;
     }
 
-    if (this->chess->team == ChessBoard::position[nextPosX][nextPosY].character) {
+    if (this->chess->team == PositionMessage::position[nextPosX][nextPosY].character) {
+        std::cout << "---False2\n";
         return false;
     }
 
@@ -23,13 +26,14 @@ bool MarshalChessCommand::isValid() const noexcept {
     unsigned uYOffset = abs(nextPosY - curPosY);
     // 检查是否走一格
     if (uXOffset + uYOffset > 1) {
+        std::cout << "---False3\n";
         return false;
     }
     return true;
 }
 
 bool MarshalChessCommand::isOutOfRanged() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
+    int nextPosX = this->nextPosX, nextPosY = this->nextPosY;
     int team = chess->team;
     nextPosY -= (!team) * 7;
     return nextPosX >= 3 && nextPosX <= 5 && nextPosY >= 0 && nextPosY <= 2;
