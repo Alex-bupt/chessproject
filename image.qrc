@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/new/icon">
+        <file>DELICATE/BA.GIF</file>
+        <file>DELICATE/BAS.GIF</file>
+        <file>DELICATE/BB.GIF</file>
+        <file>DELICATE/BBS.GIF</file>
+        <file>DELICATE/BC.GIF</file>
+        <file>DELICATE/BCS.GIF</file>
+        <file>DELICATE/BK.GIF</file>
+        <file>DELICATE/BKM.GIF</file>
+        <file>DELICATE/BKS.GIF</file>
+        <file>DELICATE/BN.GIF</file>
+        <file>DELICATE/BNS.GIF</file>
+        <file>DELICATE/BP.GIF</file>
+        <file>DELICATE/BPS.GIF</file>
+        <file>DELICATE/BR.GIF</file>
+        <file>DELICATE/BRS.GIF</file>
+        <file>DELICATE/OO.GIF</file>
+        <file>DELICATE/OOS.GIF</file>
+        <file>DELICATE/RA.GIF</file>
+        <file>DELICATE/RAS.GIF</file>
+        <file>DELICATE/RB.GIF</file>
+        <file>DELICATE/RBS.GIF</file>
+        <file>DELICATE/RC.GIF</file>
+        <file>DELICATE/RCS.GIF</file>
+        <file>DELICATE/RK.GIF</file>
+        <file>DELICATE/RKM.GIF</file>
+        <file>DELICATE/RKS.GIF</file>
+        <file>DELICATE/RN.GIF</file>
+        <file>DELICATE/RNS.GIF</file>
+        <file>DELICATE/RP.GIF</file>
+        <file>DELICATE/RPS.GIF</file>
+        <file>DELICATE/RR.GIF</file>
+        <file>DELICATE/RRS.GIF</file>
+        <file>DELICATE/Thumbs.db</file>
+    </qresource>
+</RCC>

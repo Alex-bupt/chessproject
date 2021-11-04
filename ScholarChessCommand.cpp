@@ -29,7 +29,7 @@ bool ScholarChessCommand::isValid() const noexcept {
 }
 
 bool ScholarChessCommand::isOutOfRanged() const noexcept {
-    int nextPosX = 0, nextPosY = 0;
+    int nextPosX = this->nextPosX, nextPosY = this->nextPosY;
     int team = chess->team;
     nextPosY -= (!team) * 7;
     return nextPosX >= 3 && nextPosX <= 5 && nextPosY >= 0 && nextPosY <= 2;

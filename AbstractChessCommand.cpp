@@ -7,8 +7,8 @@
 AbstractChessCommand::AbstractChessCommand(Chess chess) :
         lastPosX(0),
         lastPosY(0),
-        curPosX(0),
-        curPosY(0),
+        curPosX(chess->x),
+        curPosY(chess->y),
         nextPosX(0),
         nextPosY(0),
         chess(chess) {}
@@ -23,8 +23,9 @@ bool AbstractChessCommand::move() {
     curPosY = nextPosY;
     if (PositionMessage::position[nextPosX][nextPosY].isFilled) {
         for (auto& oneChess : ChessesManager::getInstance().chesses) {
-            if (nextPosX == oneChess.x && nextPosY == oneChess.y) {
-                oneChess.isAlive = false;
+            if (nextPosX == oneChess->x && nextPosY == oneChess->y) {
+                oneChess->isAlive = false;
+                oneChess->setCoordinate(-1,-1);
                 break;
             }
         }
@@ -35,7 +36,11 @@ bool AbstractChessCommand::move() {
     }
     int type = PositionMessage::position[lastPosX][lastPosY].piece;
     PositionMessage::position[lastPosX][lastPosY].piece = 0;
+    PositionMessage::position[lastPosX][lastPosY].character = -1;
+    PositionMessage::position[lastPosX][lastPosY].isFilled = false;
     PositionMessage::position[curPosX][curPosY].piece = type;
+    PositionMessage::position[curPosX][curPosY].character = chess->team;
+    PositionMessage::position[curPosX][curPosY].isFilled = true;
     return true;
 }
 
@@ -48,7 +53,7 @@ void AbstractChessCommand::undo() {
 }
 
 bool AbstractChessCommand::isAbleMoved() const noexcept {
-    return !isOutOfRanged() && isValid();
+    return isOutOfRanged() && isValid();
 }
 
 bool AbstractChessCommand::isOutOfRanged() const noexcept {
